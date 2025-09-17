@@ -1,7 +1,6 @@
 # Planejador de Eventos do Campus
 
 evento = {
-    evento = {
     "id": 1,
     "nome": "ConectaIF",
     "descricao": "Encontro de educação profissional científica e tecnologia",
@@ -26,6 +25,6 @@ evento = {
 }
 
 
-}
+
 
 
