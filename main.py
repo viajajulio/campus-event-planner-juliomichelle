@@ -47,6 +47,7 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
     print(f" Evento '{nome}' adicionado com sucesso!")
     return True
 
+
 def listarEventos(listaEventos):
     if not listaEventos:
         print("Nenhum evento cadastrado.")
@@ -54,3 +55,16 @@ def listarEventos(listaEventos):
     print("\n Lista de eventos:")
     for evento in listaEventos:
         print(f"ID: {evento['id']} | Nome: {evento['nome']} | Data: {evento['data']} | Local: {evento['local']} | Categoria: {evento['categoria']}")
+
+
+def procurarEventoPorNome(listaEventos, nome):
+    encontrados = [ev for ev in listaEventos if nome.lower() in ev['nome'].lower()]
+    if encontrados:
+        print(f"\n Eventos encontrados com '{nome}':")
+        for evento in encontrados:
+            print(f"ID: {evento['id']} | Nome: {evento['nome']} | Data: {evento['data']}")
+    else:
+        print(f"Nenhum evento encontrado com o nome '{nome}'.")
+
+    
+       
