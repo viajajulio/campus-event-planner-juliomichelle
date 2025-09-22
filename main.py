@@ -76,4 +76,6 @@ def deletarEvento(listaEventos, id):
     print(f"Nenhum evento encontrado com ID {id}.")
     return False        
 
+def validarData(dataStr):
+    
 
