@@ -25,6 +25,25 @@ evento = {
 }
 
 
+def adicionarEvento(listaEventos, nome, data, local, categoria):
+    if not nome or not data or not local or not categoria:
+        print("Todos os campos são obrigatórios.")
+        return False
 
+    if not validarData(data):
+        print("Data inválida! Use o formato AAAA-MM-DD.")
+        return False
 
+    novo_id = len(listaEventos) + 1
+    evento = {
+        "id": novo_id,
+        "nome": nome,
+        "data": data,
+        "local": local,
+        "categoria": categoria
+    }
+
+    listaEventos.append(evento)
+    print(f" Evento '{nome}' adicionado com sucesso!")
+    return True
 
