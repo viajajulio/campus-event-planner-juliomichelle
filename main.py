@@ -48,6 +48,8 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
     return True
 
 
+def validarData(dataStr):
+
 def listarEventos(listaEventos):
     if not listaEventos:
         print("Nenhum evento cadastrado.")
@@ -76,6 +78,6 @@ def deletarEvento(listaEventos, id):
     print(f"Nenhum evento encontrado com ID {id}.")
     return False        
 
-def validarData(dataStr):
+
     
 
