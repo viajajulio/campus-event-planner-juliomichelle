@@ -47,3 +47,10 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
     print(f" Evento '{nome}' adicionado com sucesso!")
     return True
 
+def listarEventos(listaEventos):
+    if not listaEventos:
+        print("Nenhum evento cadastrado.")
+        return
+    print("\n Lista de eventos:")
+    for evento in listaEventos:
+        print(f"ID: {evento['id']} | Nome: {evento['nome']} | Data: {evento['data']} | Local: {evento['local']} | Categoria: {evento['categoria']}")
