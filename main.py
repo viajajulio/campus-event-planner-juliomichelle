@@ -48,8 +48,6 @@ def adicionarEvento(listaEventos, nome, data, local, categoria):
     return True
 
 
-def validarData(dataStr):
-
 def listarEventos(listaEventos):
     if not listaEventos:
         print("Nenhum evento cadastrado.")
@@ -78,6 +76,27 @@ def deletarEvento(listaEventos, id):
     print(f"Nenhum evento encontrado com ID {id}.")
     return False        
 
-
+def validarData(dataStr):
+    #AAAA-MM-DD
+    if len(dataStr) != 10:
+        return False
+    else:
+        try:
+            ano = int(dataStr[:4])
+            mes = int(dataStr[5:7])
+            dia = int(dataStr[8:])
+            print(ano , mes , dia)
+            if (ano < 1900):
+                return False
+            if ( mes <= 1 or mes >=12 ):
+                print("Mes invalido")
+                return False
+            if (  dia <= 1 or dia >= 31 ):
+                print("Dia invalido")
+                return False
+                
+            return True
+        except:
+            return False  
     
 
