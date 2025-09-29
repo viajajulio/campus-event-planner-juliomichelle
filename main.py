@@ -88,10 +88,10 @@ def validarData(dataStr):
             print(ano , mes , dia)
             if (ano < 1900):
                 return False
-            if ( mes <= 1 or mes >=12 ):
+            if ( mes < 1 or mes >12 ):
                 print("Mes invalido")
                 return False
-            if (  dia <= 1 or dia >= 31 ):
+            if (  dia < 1 or dia > 31 ):
                 print("Dia invalido")
                 return False
                 
