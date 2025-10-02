@@ -52,7 +52,7 @@ def listarEventos(listaEventos):
     if not listaEventos:
         print("Nenhum evento cadastrado.")
         return
-    print("\n Lista de eventos:")
+    print("Lista de eventos: ")
     for evento in listaEventos:
         print(f"ID: {evento['id']} | Nome: {evento['nome']} | Data: {evento['data']} | Local: {evento['local']} | Categoria: {evento['categoria']}")
 
@@ -60,7 +60,7 @@ def listarEventos(listaEventos):
 def procurarEventoPorNome(listaEventos, nome):
     encontrados = [ev for ev in listaEventos if nome.lower() in ev['nome'].lower()]
     if encontrados:
-        print(f"\n Eventos encontrados com '{nome}':")
+        print(f"Eventos encontrados com '{nome}':")
         for evento in encontrados:
             print(f"ID: {evento['id']} | Nome: {evento['nome']} | Data: {evento['data']}")
     else:
@@ -77,7 +77,11 @@ def deletarEvento(listaEventos, id):
     return False        
 
 def validarData(dataStr):
+<<<<<<< HEAD
 
+=======
+    #AAAA-MM-DD
+>>>>>>> bc41289968ba177984dd8b786de9c02cab5e48cb
     if len(dataStr) != 10:
         return False
     else:
@@ -88,15 +92,28 @@ def validarData(dataStr):
             print(ano , mes , dia)
             if (ano < 1900):
                 return False
+<<<<<<< HEAD
             if ( mes < 1 or mes > 12 ):
                 print("Mes invalido")
                 return False
             if (  dia < 1 or dia > 31 ):
+=======
+            if ( mes <= 1 or mes >=12 ):
+                print("Mes invalido")
+                return False
+            if (  dia <= 1 or dia >= 31 ):
+>>>>>>> bc41289968ba177984dd8b786de9c02cab5e48cb
                 print("Dia invalido")
                 return False
                 
             return True
         except:
+<<<<<<< HEAD
             return False  
+=======
+            return False     
     
+>>>>>>> bc41289968ba177984dd8b786de9c02cab5e48cb
+    
+
 
