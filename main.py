@@ -77,7 +77,7 @@ def deletarEvento(listaEventos, id):
     return False        
 
 def validarData(dataStr):
-    #AAAA-MM-DD
+
     if len(dataStr) != 10:
         return False
     else:
@@ -88,7 +88,7 @@ def validarData(dataStr):
             print(ano , mes , dia)
             if (ano < 1900):
                 return False
-            if ( mes < 1 or mes >12 ):
+            if ( mes < 1 or mes > 12 ):
                 print("Mes invalido")
                 return False
             if (  dia < 1 or dia > 31 ):
