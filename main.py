@@ -99,3 +99,4 @@ def validarData(dataStr):
         except:
             return False  
 
+
