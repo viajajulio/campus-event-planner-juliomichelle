@@ -118,8 +118,6 @@ def validarData(dataStr):
         except:
             return False  
 
-
-#Menu
 def displayMenu():
     print("+--------------------------------------------------+")
     print("|      IFCONECTA - Guia e Planejamento             |")
@@ -140,7 +138,6 @@ def displayMenu():
     print("|--------------------------------------------------|")
 
 def mostrarDetalhesEvento(evento):
-#Exibe o local, data, hora e informações de contato.
     print(" DETALHES DO EVENTO ")
     print(f"Nome: {evento['nome']}")
     print(f"Status: {evento['status'].capitalize()}")
@@ -150,7 +147,6 @@ def mostrarDetalhesEvento(evento):
 
 
 def mostrarProgramacao(evento):
-#Lista as atividades e horários da programação/palestras.
     print(" PROGRAMAÇÃO ")
     if evento.get('programacao'):
         for item in evento['programacao']:
@@ -175,7 +171,6 @@ def listarCategorias(listaAtividades):
         print("Nenhuma categoria definida na programação.")
 
 def mostrarMapaLocal(evento):
-#Exibe o endereço e o site para o mapa do evento.
     print(" MAPA E LOCALIZAÇÃO ")
     print(f"Endereço: {evento['local']}")
     print(f"Instruções: Utilize o site oficial para visualizar o mapa completo e direções.")
@@ -183,7 +178,6 @@ def mostrarMapaLocal(evento):
 
 
 def mostrarIngressos(evento):
-#Exibe informações de capacidade e preço do ingresso.
     print(" INFORMAÇÕES DE INGRESSOS ")
     print(f"Tipo: {evento['tipo'].capitalize()}")
     print(f"Preço: R$ {evento['preco_ingresso']:.2f}")
@@ -220,12 +214,12 @@ def main():
         escolha = int(input(">> Escolha uma opção [0-10]: "))
     except ValueError:
         print("Entrada inválida. Digite apenas o número da opção.")
-        return  # encerra o programa
+        return  
     
     if escolha == 0:
         print("Saindo do Guia Interativo. Até mais!")
 
-    elif escolha == 1:  # Detalhes
+    elif escolha == 1:  
         listarEventos(eventos)
         try:
             id_ev = int(input("Digite o ID do evento: "))
@@ -237,14 +231,14 @@ def main():
         except ValueError:
             print("ID inválido.")
 
-    elif escolha == 2:  # Programação
+    elif escolha == 2:  
         listarEventos(eventos)
         id_ev = int(input("Digite o ID do evento: "))
         ev = next((e for e in eventos if e["id"] == id_ev), None)
         if ev:
             mostrarProgramacao(ev)
 
-    elif escolha == 3:  # Filtrar programação
+    elif escolha == 3:  
         listarEventos(eventos)
         id_ev = int(input("Digite o ID do evento: "))
         ev = next((e for e in eventos if e["id"] == id_ev), None)
@@ -267,14 +261,14 @@ def main():
         if ev:
             mostrarIngressos(ev)
 
-    elif escolha == 6:  # Adicionar novo
+    elif escolha == 6:  
         nome = input("Nome do novo evento: ")
         data = input("Data (AAAA-MM-DD): ")
         local = input("Local: ")
         categoria = input("Categoria: ")
         adicionarEvento(eventos, nome, data, local, categoria)
 
-    elif escolha == 7:  # Marcar como participado
+    elif escolha == 7:  
         listarEventos(eventos)
         id_ev = int(input("Digite o ID do evento: "))
         ev = next((e for e in eventos if e["id"] == id_ev), None)
@@ -282,17 +276,17 @@ def main():
             ev["participado"] = True
             print(f"Você marcou o evento '{ev['nome']}' como PARTICIPADO.")
 
-    elif escolha == 8:  # Relatório
+    elif escolha == 8:  
         listarEventos(eventos)
         id_ev = int(input("Digite o ID do evento: "))
         ev = next((e for e in eventos if e["id"] == id_ev), None)
         if ev:
             gerarRelatorio(ev)
 
-    elif escolha == 9:  # Listar todos
+    elif escolha == 9:  
         listarEventos(eventos)
 
-    elif escolha == 10:  # Excluir
+    elif escolha == 10:  
         listarEventos(eventos)
         try:
             id_ev = int(input("Digite o ID do evento a excluir: "))
