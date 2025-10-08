@@ -209,91 +209,97 @@ def gerarRelatorio(evento):
 
 
 def main():
-    displayMenu()
-    try:
-        escolha = int(input(">> Escolha uma opção [0-10]: "))
-    except ValueError:
-        print("Entrada inválida. Digite apenas o número da opção.")
-        return  
-    
-    if escolha == 0:
-        print("Saindo do Guia Interativo. Até mais!")
+    escolha = -1 
 
-    elif escolha == 1:  
-        listarEventos(eventos)
+    while escolha != 0:
+        displayMenu()
         try:
+            escolha = int(input(">> Escolha uma opção [0-10]: "))
+        except ValueError:
+            print("Entrada inválida. Digite apenas o número da opção.")
+            return  
+    
+        if escolha == 0:
+            print("Saindo do Guia Interativo. Até mais!")
+
+        elif escolha == 1:  
+            listarEventos(eventos)
+            try:
+                id_ev = int(input("Digite o ID do evento: "))
+                ev = next((e for e in eventos if e["id"] == id_ev), None)
+                if ev:
+                    mostrarDetalhesEvento(ev)
+                else:
+                    print("Evento não encontrado.")
+            except ValueError:
+                print("ID inválido.")
+
+        elif escolha == 2:  
+            listarEventos(eventos)
             id_ev = int(input("Digite o ID do evento: "))
             ev = next((e for e in eventos if e["id"] == id_ev), None)
             if ev:
-                mostrarDetalhesEvento(ev)
-            else:
-                print("Evento não encontrado.")
-        except ValueError:
-            print("ID inválido.")
+                mostrarProgramacao(ev)
 
-    elif escolha == 2:  
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            mostrarProgramacao(ev)
+        elif escolha == 3:  
+            listarEventos(eventos)
+            id_ev = int(input("Digite o ID do evento: "))
+            ev = next((e for e in eventos if e["id"] == id_ev), None)
+            if ev:
+                listarCategorias(ev['programacao'])
+                termo = input("Digite Categoria OU palavra-chave para buscar: ")
+                filtrarProgramacao(ev['programacao'], termo)
 
-    elif escolha == 3:  
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            listarCategorias(ev['programacao'])
-            termo = input("Digite Categoria OU palavra-chave para buscar: ")
-            filtrarProgramacao(ev['programacao'], termo)
+        elif escolha == 4:
+            listarEventos(eventos)
+            id_ev = int(input("Digite o ID do evento: "))
+            ev = next((e for e in eventos if e["id"] == id_ev), None)
+            if ev:
+                mostrarMapaLocal(ev)
 
-    elif escolha == 4:
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            mostrarMapaLocal(ev)
+        elif escolha == 5:
+            listarEventos(eventos)
+            id_ev = int(input("Digite o ID do evento: "))
+            ev = next((e for e in eventos if e["id"] == id_ev), None)
+            if ev:
+                mostrarIngressos(ev)
 
-    elif escolha == 5:
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            mostrarIngressos(ev)
+        elif escolha == 6:  
+            nome = input("Nome do novo evento: ")
+            data = input("Data (AAAA-MM-DD): ")
+            local = input("Local: ")
+            categoria = input("Categoria: ")
+            adicionarEvento(eventos, nome, data, local, categoria)
 
-    elif escolha == 6:  
-        nome = input("Nome do novo evento: ")
-        data = input("Data (AAAA-MM-DD): ")
-        local = input("Local: ")
-        categoria = input("Categoria: ")
-        adicionarEvento(eventos, nome, data, local, categoria)
+        elif escolha == 7:  
+            listarEventos(eventos)
+            id_ev = int(input("Digite o ID do evento: "))
+            ev = next((e for e in eventos if e["id"] == id_ev), None)
+            if ev:
+                ev["participado"] = True
+                print(f"Você marcou o evento '{ev['nome']}' como PARTICIPADO.")
 
-    elif escolha == 7:  
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            ev["participado"] = True
-            print(f"Você marcou o evento '{ev['nome']}' como PARTICIPADO.")
+        elif escolha == 8:  
+            listarEventos(eventos)
+            id_ev = int(input("Digite o ID do evento: "))
+            ev = next((e for e in eventos if e["id"] == id_ev), None)
+            if ev:
+                gerarRelatorio(ev)
 
-    elif escolha == 8:  
-        listarEventos(eventos)
-        id_ev = int(input("Digite o ID do evento: "))
-        ev = next((e for e in eventos if e["id"] == id_ev), None)
-        if ev:
-            gerarRelatorio(ev)
+        elif escolha == 9:  
+            listarEventos(eventos)
 
-    elif escolha == 9:  
-        listarEventos(eventos)
+        elif escolha == 10:  
+            listarEventos(eventos)
+            try:
+                id_ev = int(input("Digite o ID do evento a excluir: "))
+                deletarEvento(eventos, id_ev)
+            except ValueError:
+                print("ID inválido.")
 
-    elif escolha == 10:  
-        listarEventos(eventos)
-        try:
-            id_ev = int(input("Digite o ID do evento a excluir: "))
-            deletarEvento(eventos, id_ev)
-        except ValueError:
-            print("ID inválido.")
+        else:
+            print("Opção inválida. Escolha um número entre 0 e 10.")
 
-    else:
-        print("Opção inválida. Escolha um número entre 0 e 10.")
+if __name__ == "__main__":
+    main()
 
