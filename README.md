@@ -56,18 +56,18 @@ O Python já vem pré-instalado na maioria das distribuições e pode ser gerenc
 git clone https://github.com/MichelleDayaned/campus-event-planner-juliomichelle
 
 
-**2. Navegue até a pasta do projeto:**
+2. Navegue até a pasta do projeto:
 
 ```bash
 cd campus-event-planner-juliomichelle
 
 
-**3. Execute o script principal:**
+3. Execute o script principal:
 
 ```bash
 python main.py
-**Caso o comando acima não funcione, tente `python3 main.py`**
+Caso o comando acima não funcione, tente `python3 main.py`
 
 
-**4. O menu IF CONECTA será exibido no seu terminal.**
-**Siga as instruções do programa.**
+4. O menu IF CONECTA será exibido no seu terminal.
+Siga as instruções do programa.
